@@ -4,3 +4,7 @@ export class genreClass{
 }
 
 export type genreArray = genreClass[];
+
+export interface genreList {
+    genres: genreArray,
+}

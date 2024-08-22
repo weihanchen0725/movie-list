@@ -7,7 +7,7 @@ export class directionClass extends baseClass {
             return (direction.value === value);
         });
 
-        super(tempDirection?.label, value);
+        super(tempDirection?.label ?? '', value);
     }
 }
 export class categoryClass extends baseClass {
@@ -15,7 +15,7 @@ export class categoryClass extends baseClass {
         const tempCategoryLabel = Filter.filter_categories_list.find((category:baseClass) => {
             return category.value === value;
         });
-        super(tempCategoryLabel?.label, value);
+        super(tempCategoryLabel?.label ?? '', value);
     }
 }
 export class sortByClass extends baseClass{

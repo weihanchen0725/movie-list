@@ -21,7 +21,7 @@ const MovieCard: React.FC<MovieClassProps> = ({movieData, genreList}) => {
             const selectedGenreList:string[] = [];
             movieData?.genre_ids?.map((selectedGenre) => {
                 const tempGenre = genreList?.find((genreItem:genreClass) => genreItem.id === selectedGenre) ?? null;
-                selectedGenreList.push(tempGenre?.name);
+                selectedGenreList.push(tempGenre?.name ?? '');
             });
             setCurrentGenreList(selectedGenreList);
             setLoading(false);
