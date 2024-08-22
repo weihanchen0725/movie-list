@@ -1,3 +1,22 @@
+# Logs
+pnpm-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 # Created by https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,sass
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,node,visualstudiocode,sass
 
@@ -93,7 +112,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/

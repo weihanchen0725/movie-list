@@ -1,0 +1,74 @@
+{
+  "filter_directions_list": [
+    {
+      "label": "Ascend",
+      "value": "asc"
+    },
+    {
+      "label": "Descend",
+      "value": "desc"
+    }
+  ],
+  "filter_directions_map": {
+    "ASCEND": {
+      "label": "Ascend",
+      "value": "asc"
+    },
+    "DESCEND": {
+      "label": "Descend",
+      "value": "desc"
+    }
+  },
+  "filter_categories_list": [
+    {
+      "label": "Popularity",
+      "value": "popularity"
+    },
+    {
+      "label": "Title",
+      "value": "original_title"
+    },
+    {
+      "label": "Revenue",
+      "value": "revenue"
+    },
+    {
+      "label": "Released Date",
+      "value": "primary_released_date"
+    },
+    {
+      "label": "Vote Average",
+      "value": "vote_average"
+    },
+    {
+      "label": "Vote Count",
+      "value": "vote_count"
+    }
+  ],
+  "filter_categories_map": {
+    "POPULARITY":{
+      "label": "Popularity",
+      "value": "popularity"
+    },
+    "TITLE":{
+      "label": "Title",
+      "value": "original_title"
+    },
+    "REVENUE":{
+      "label": "Revenue",
+      "value": "revenue"
+    },
+    "RELEASED_DATE":{
+      "label": "Released Date",
+      "value": "primary_released_date"
+    },
+    "VOTE_AVERAGE":{
+      "label": "Vote Average",
+      "value": "vote_average"
+    },
+    "VOTE_COUNT":{
+      "label": "Vote Count",
+      "value": "vote_count"
+    }
+  }
+}

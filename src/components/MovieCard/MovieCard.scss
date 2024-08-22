@@ -1,0 +1,59 @@
+.movie-card{
+    &-wrapper{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+    }
+    &-img{
+        min-height: 22.5rem;
+        max-height: 22.5rem;
+    }
+    &-text{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &-scoreboard{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+        &-genres{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+        &-description{
+            text-overflow: ellipsis;
+        }
+    }
+    &-title{
+        display: flex;
+        flex-direction: column;
+    }
+    min-width: 100%;
+    max-width: 100%;
+
+}
+.ant-card{
+    --light-grey: rgb(240, 240, 240);
+
+    padding-bottom: 1rem;
+    &-cover{
+
+    }
+    &-body{
+        min-height: 10rem;
+        max-height: 10rem;
+        padding: 1rem 1rem 0rem 1rem;
+        overflow-y: hidden;
+        border-top: 1px solid var(--light-grey);
+    }
+    &-meta{
+        &-description{
+            overflow: hidden;
+        }
+    }
+}
