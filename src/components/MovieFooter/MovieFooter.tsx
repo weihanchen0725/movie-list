@@ -10,7 +10,7 @@ const MovieFooter = () => {
         },
         linkedin: {
             title: <><IconBrandLinkedin />LinkedIn</>,
-            link: 'www.linkedin.com/in/weihanchen0725'
+            link: 'https://www.linkedin.com/in/weihanchen0725'
         }
     }
     

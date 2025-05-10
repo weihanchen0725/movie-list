@@ -5,15 +5,15 @@
         align-items: center;
         padding: 1rem;
         gap: 1rem;
-        min-width: 30rem;
+        min-width: 100rem;
     }
     &-wrapper{
         display: grid;
         grid-template-columns: 15% 15% 15% 15% 15%;
         gap: 1rem;
         justify-content: center;
-        min-width: 100%;
-        max-width: 20rem;
+        min-width: 100rem;
+        max-width: 100rem;
     }
     &-filters{
         width: 100%;
