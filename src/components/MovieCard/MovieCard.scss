@@ -1,60 +1,254 @@
-.movie-card{
-    min-width: 100%;
-    max-width: 100%;
-    &-wrapper{
-        display: flex;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-    }
-    &-img{
-        min-height: 22.5rem;
-        max-height: 22.5rem;
-    }
-    &-text{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        &-scoreboard{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 100%;
-        }
-        &-genres{
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            // max-width: 100%;
-        }
-        &-description{
-            text-overflow: ellipsis;
-        }
-    }
-    &-title{
-        display: flex;
-        flex-direction: column;
-    }
-    
+// Variables
+$card-radius: 1.5rem;
+$shadow: 0 4px 24px rgba(40, 40, 80, 0.10);
+$shadow-hover: 0 8px 32px rgba(40, 40, 80, 0.18);
+$primary-accent: #ff5c5c;
+$genre-bg: #f4f6fa;
+$text-main: #23233a;
+$text-muted: #7a7a8c;
+$star-color: #F8D001;
+$star-inactive: #ececec;
 
+// Movie Card Wrapper (inside grid)
+.movie-card-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  .movie-card {
+    width: 100%;
+    max-width: 320px;
+    min-width: 220px;
+    margin: 0 auto;
+  }
 }
-.ant-card{
-    --light-grey: rgb(240, 240, 240);
 
-    padding-bottom: 1rem;
-    &-cover{
-        background-color: transparent;
+// Ant Design Card Customization
+.movie-card {
+  background: #fff !important;
+  border-radius: $card-radius !important;
+  box-shadow: $shadow;
+  overflow: hidden;
+  transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  border: none !important;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: translateY(-4px) scale(1.025);
+
+    .movie-card-img {
+      filter: brightness(1.07) saturate(1.08);
+      transform: scale(1.03);
     }
-    &-body{
-        min-height: 10rem;
-        max-height: 10rem;
-        padding: 1rem 1rem 0rem 1rem;
-        overflow-y: hidden;
-        border-top: 1px solid var(--light-grey);
+    // .movie-card-title {
+    //   color: $primary-accent;
+    // }
+  }
+
+  .ant-card-cover {
+    border-radius: $card-radius $card-radius 0 0 !important;
+    overflow: hidden;
+  }
+
+  .ant-card-body {
+    padding: 1.1rem 1.3rem 1.3rem 1.3rem !important;
+    background: #fff;
+  }
+}
+
+// Movie Poster Image
+.movie-card-img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  background: #eaeaea;
+  border-radius: $card-radius $card-radius 0 0;
+  transition: filter 0.3s, transform 0.3s;
+  position: relative;
+}
+
+// Main Text Area
+.movie-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: #fff;
+  color: $text-main;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+
+  // Scoreboard (rating stars)
+  &-scoreboard {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+
+    // Custom StarRating integration
+    .star-rating {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      outline: none;
+      padding: 0.1rem 0;
+      margin: 0;
+      list-style: none;
+      background: transparent;
+      border-radius: 0.5rem;
+      transition: box-shadow 0.2s;
+      &:focus-visible {
+        box-shadow: 0 0 0 2px $star-color;
+      }
     }
-    &-meta{
-        &-description{
-            overflow: hidden;
-        }
+    .star {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s, filter 0.18s;
+      svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        fill: $star-inactive;
+        transition: fill 0.18s;
+      }
+      &.full svg {
+        fill: $star-color;
+        filter: drop-shadow(0 2px 6px rgba(248, 208, 1, 0.08));
+        transform: scale(1.12);
+      }
+      &:hover svg,
+      &:focus svg {
+        filter: drop-shadow(0 4px 12px rgba(248, 208, 1, 0.18));
+        transform: scale(1.18);
+      }
+      .star-rating:hover & {
+        transform: scale(1.04);
+      }
     }
+    .star:focus-visible {
+      outline: 2px solid $star-color;
+      border-radius: 50%;
+    }
+  }
+
+  // Genre List
+  &-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.94rem;
+    color: $text-main;
+    margin-bottom: 0.2rem;
+
+    i {
+      background: $genre-bg;
+      border-radius: 999px;
+      padding: 0.23rem 0.9rem;
+      color: $text-main;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid #e2e4ec;
+      transition: background 0.22s;
+      margin-right: 0.18rem;
+    }
+    b {
+      color: $text-main;
+      margin-right: 0.4rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  // Description
+  &-description {
+    font-size: 0.98rem;
+    color: $text-muted;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // Truncate after 3 lines
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0.3rem;
+    min-height: 3.2em;
+    max-height: 4.8em;
+    transition: color 0.3s;
+    b {
+      color: $text-main;
+      margin-right: 0.3rem;
+      font-weight: 600;
+    }
+  }
+}
+
+// Movie Title (in tooltip or meta)
+.movie-card-title {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.18rem;
+  line-height: 1.25;
+  color: $text-main;
+  transition: color 0.3s;
+  word-break: break-word;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+// Tooltip content for all tooltips (rating, genres, description)
+.movie-card-tooltip-content {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.95rem;
+  color: $text-main;
+  line-height: 1.4;
+  max-width: 280px;
+  word-wrap: break-word;
+  label {
+    font-weight: 600;
+    margin-right: 0.3rem;
+    color: $primary-accent;
+  }
+  span {
+    font-weight: 400;
+    color: #555;
+  }
+}
+
+// Responsive for your grid
+@media (max-width: 1200px) {
+  .movie-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 0;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 900px) {
+  .movie-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 0;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 600px) {
+  .movie-wrapper {
+    grid-template-columns: 1fr;
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .movie-card {
+    max-width: 95vw;
+    min-width: 80vw;
+    .ant-card-body {
+      padding: 0.9rem 0.6rem 1rem 0.6rem !important;
+    }
+  }
 }

@@ -49,8 +49,8 @@ const MovieCard: React.FC<MovieClassProps> = ({movieData, genreList}) => {
                     <div className="movie-card-text">
                         <div className="movie-card-text-scoreboard">
                             <Tooltip placement="top" title={
-                                <div className="movie-card-title">
-                                <label>Counts:&nbsp;{movieData.vote_count}</label>
+                                <div>
+                                <label>Counts:&nbsp;{movieData.vote_count}</label>{' '}
                                 <label>Rates:&nbsp;{movieData.vote_average/2}/5</label>
                                 </div>
                                 }>
