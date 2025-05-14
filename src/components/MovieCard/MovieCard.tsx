@@ -71,7 +71,7 @@ const MovieCard: React.FC<MovieClassProps> = ({movieData, genreList}) => {
                             </label>
                         }>
                         <label className="movie-card-text-genres"><b>Genres:</b>&nbsp;{currentGenreList?.map((genre, index) => (
-                            <span>
+                            <span key={`movie-genre-${genre}-${index}`}>
                             <i>#{genre}</i>
                             </span>
                             ))}
