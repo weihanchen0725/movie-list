@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import GETTMDBDiscoverMovie from '../../services/TMDB/Discover/GETTMDBDiscoverMovie';
 import GETTMDBGenresMovieList from '../../services/TMDB/Genres/GETTMDBGenresMovieList';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import { Pagination, Select } from 'antd';
+import { Checkbox, Pagination, Select } from 'antd';
 import Typography from 'antd/es/typography/Typography';
 import { resultClass } from '../../classes/resultClass';
 import Filter from '../../assets/data/Filter.json';
@@ -53,12 +53,12 @@ const MovieBody = () => {
         });
       },[]);
 
-      // const handleFilterCheckbox = useCallback((event:ChangeEvent<HTMLInputElement>) => {
-      //   setFilterData((originalData) => ({
-      //     ...originalData, 
-      //     [event.target.name]: event.target.checked,
-      //   }));
-      // },[]);
+      const handleFilterCheckbox = useCallback((event:ChangeEvent<HTMLInputElement>) => {
+        setFilterData((originalData) => ({
+          ...originalData, 
+          [event.target.name]: event.target.checked,
+        }));
+      },[]);
       
       const handleFilterSortBy = useCallback((sortByType:FilterSortBy, value:string) => {
         switch(sortByType){
@@ -93,7 +93,7 @@ const MovieBody = () => {
     <div className='movie-filters'>
       <Select className='movie-filters-category' defaultValue={filterData?.sort_by.category.value} options={Filter.filter_categories_list} onChange={(valueCategory) => { handleFilterSortBy(FilterSortBy.CATEGORY, valueCategory); }} />
       <Select className='movie-filters-direction' defaultValue={filterData?.sort_by.direction.value} options={Filter.filter_directions_list} onChange={(valueDirection) => { handleFilterSortBy(FilterSortBy.DIRECTION, valueDirection); }} />
-      {/* <Checkbox name='include_adult' checked={filterData?.include_adult} onChange={handleFilterCheckbox}>Includes Adult</Checkbox> */}
+      <Checkbox name='include_adult' checked={filterData?.include_adult} onChange={handleFilterCheckbox}>Includes Adult</Checkbox>
     </div>
     <div className='movie-filters-results'>
     <Typography>Total&nbsp;{movieData?.total_results}&nbsp;Found</Typography>

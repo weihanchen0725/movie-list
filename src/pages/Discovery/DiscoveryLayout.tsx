@@ -2,7 +2,7 @@
 import { ReactNode } from 'react'
 import './DiscoveryLayout.scss'
 
-interface LayoutProps {
+export interface LayoutProps {
     children: ReactNode
 }
 
