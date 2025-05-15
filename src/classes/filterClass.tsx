@@ -31,6 +31,7 @@ export class sortByClass extends baseClass{
 }
 
 export class filterClass {
+    [key: string]: sortByClass | boolean | number;
     "sort_by": sortByClass;
     "include_adult": boolean;
     "page":number;

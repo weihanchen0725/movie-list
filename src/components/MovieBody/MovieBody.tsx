@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import GETTMDBDiscoverMovie from '../../services/TMDB/Discover/GETTMDBDiscoverMovie';
 import GETTMDBGenresMovieList from '../../services/TMDB/Genres/GETTMDBGenresMovieList';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import { Checkbox, Pagination, Select } from 'antd';
+import { Checkbox, CheckboxChangeEvent, Pagination, Select } from 'antd';
 import Typography from 'antd/es/typography/Typography';
 import { resultClass } from '../../classes/resultClass';
 import Filter from '../../assets/data/Filter.json';
@@ -53,10 +53,11 @@ const MovieBody = () => {
         });
       },[]);
 
-      const handleFilterCheckbox = useCallback((event:ChangeEvent<HTMLInputElement>) => {
+      const handleFilterCheckbox = useCallback((e:CheckboxChangeEvent) => {
+        const { target } = e;
         setFilterData((originalData) => ({
           ...originalData, 
-          [event.target.name]: event.target.checked,
+          include_adult: target.checked,
         }));
       },[]);
       
