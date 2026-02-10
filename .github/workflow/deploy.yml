@@ -9,6 +9,10 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      VITE_TMDB_URL: ${{ secrets.VITE_TMDB_URL }}
+      VITE_TMDB_READ_API_KEY: ${{ secrets.VITE_TMDB_READ_API_KEY }}
+      VITE_TMDB_PHOTO_URL: ${{ secrets.VITE_TMDB_PHOTO_URL }}
 
     steps:
       - name: Checkout repo
@@ -34,6 +38,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    env:
+      VITE_TMDB_URL: ${{ secrets.VITE_TMDB_URL }}
+      VITE_TMDB_READ_API_KEY: ${{ secrets.VITE_TMDB_READ_API_KEY }}
+      VITE_TMDB_PHOTO_URL: ${{ secrets.VITE_TMDB_PHOTO_URL }}
 
     steps:
       - name: Download artifact

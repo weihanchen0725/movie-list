@@ -6,5 +6,6 @@ export default GETTMDBRootURL;
 
 export const GETTMDBPhotoURL = (photoParameter:string) => {
     const rootPhotoURL = import.meta.env.VITE_TMDB_PHOTO_URL;
-    return `${rootPhotoURL}${photoParameter}`
+    const width = "w500";
+    return `${rootPhotoURL}${width}${photoParameter}`
 }
