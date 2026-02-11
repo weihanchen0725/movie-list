@@ -9,26 +9,27 @@ interface MovieNavBarParamsType {
 const MovieNavBar:React.FC<MovieNavBarParamsType> = ({
     TabData, SetSelectedTab
 }) => {
-    const navItemList = [
+    const navItemList = [{
+            key: 1,
+            label: "Discory"
+        },
         {
             key: 0,
             label: "Overview"
         }, 
-        {
-            key: 1,
-            label: "Discory"
-        }];
+    ];
     return (
         <div className='movie-navbar'>
             {navItemList.map((item, index) => {
                 const isSelected = item.key === TabData;
                 return (
-                <Button key={`nav-bar-item-${index}`} variant={isSelected ? 'filled' : 'text'} ghost={!isSelected} color={isSelected ? 'primary' : undefined} value={item.key} onClick={(event:React.MouseEvent<HTMLButtonElement>) => {
+                <Button key={`nav-bar-item-${index}`} className={isSelected ? 'movie-navbar-item-selected' : 'movie-navbar-item'}  variant={'text'} ghost={!isSelected} value={item.key} onClick={(event:React.MouseEvent<HTMLButtonElement>) => {
                     const {currentTarget} = event;
                     const currentValue = +currentTarget.value as SelectTabType;
                     SetSelectedTab(currentValue);
                 }}>
                     {item.label}
+                    {isSelected && <div className='movie-navbar-item-selected-line'></div>}
                 </Button>
             )
             })}

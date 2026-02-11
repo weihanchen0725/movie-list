@@ -1,8 +1,81 @@
+@use "../../styles/variables" as *;
+
 .movie{
     &-navbar{
         flex: 1 1 0;
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: $secondary-background-color;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        height: auto;
+        width: auto;
+        min-width: 0;  
+        &-item, &-item-selected {
+            margin: 0;
+            padding: 0.5rem 1rem;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            width: auto;
+            min-width: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: $primary-text-color;
+            background-color: transparent !important;  
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative; 
+            overflow: hidden;
+
+            & span{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover{
+                background-color: transparent !important;
+                color: $secondary-text-color;
+            }
+            &:active{
+                background-color: transparent !important;
+                color: $secondary-text-color;
+            }
+            &:focus{
+                background-color: transparent !important;
+                color: $secondary-text-color;
+            }
+        }
+        &-item-selected{
+            color: $secondary-text-color;
+
+            &-line{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: $secondary-text-color;
+                transition: width 0.3s ease;
+            }
+        }
+        &-item-selected:hover{
+            color: $secondary-text-color !important;
+        }
+        &-item-selected:active{
+            color: $secondary-text-color !important;
+        }
+        &-item-selected:focus{
+            color: $secondary-text-color !important;
+        }
+        
     }
 }

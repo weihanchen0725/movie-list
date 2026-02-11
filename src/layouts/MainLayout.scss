@@ -1,0 +1,12 @@
+@use "../styles/variables" as *;
+
+.main-layout{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: $primary-background-color;
+    color: $primary-text-color;    
+}
